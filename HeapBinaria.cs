@@ -4,33 +4,35 @@ using System.Text;
 
 namespace HB
 {
-    class HeapBinaria
+    class HeapBinaria<T>
     {
-        int[] datos;
-
+        T[] datos;
+        bool claseHeap; //Sirve para chequear si es una maxHeap(true) o MinHeap(false)
+        
         //Contructor de la HeapBinaria
 
-        public HeapBinaria(int capacidad)
+        public HeapBinaria(int capacidad, bool claseHeap)
         {
-            this.datos = new int[capacidad + 1]; //Le sumo ya que considero la heap a partir de la pos 1.
+            this.datos = new T[capacidad + 1]; //Le sumo ya que considero la heap a partir de la pos 1.
+            this.claseHeap = claseHeap;
         }
         
         //Metodos para obtener raices e hijos;
 
         private int getRaiz(){
-            return this.datos[1];
+            return int.Parse(this.datos[1].ToString());
         }
 
         private int getDatoPosicion(int i){
-            return this.datos[i];
+            return int.Parse(this.datos[1].ToString());
         }
 
         private int getHijoIzquierdo(int i){
-            return this.datos[i * 2];
+            return int.Parse(this.datos[i * 2].ToString());
         }
 
         private int getHijoDerecho(int i){
-            return this.datos[i * 2 + 1];
+            return int.Parse(this.datos[i * 2 + 1].ToString());
         }
 
         private bool tieneHijoIzquierdo(int i)
@@ -44,9 +46,20 @@ namespace HB
         }
 
         //Metodo es vacia
-         public bool esVacia()
+        public bool esVacia()
         {
             return this.datos.Length <= 1;
         }
+
+        //AgregarElementos a la Heap
+        public bool agregarElementos(){
+            
+            
+
+            return true;
+        }
+
+
+
     }
 }

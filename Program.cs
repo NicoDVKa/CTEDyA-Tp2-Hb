@@ -9,7 +9,8 @@ namespace HB
         {
            int capacidad = -2;                //Si capacidad es < -1 se rompe.
            if (capacidad < -1) capacidad = -1;
-           HeapBinaria heapBinaria = new HeapBinaria(capacidad);
+           bool claseHeap = true;          
+           HeapBinaria<int> heapBinaria = new HeapBinaria<int>(capacidad,claseHeap);
 
            //Comprobacion de esVacia()
            Console.WriteLine("La heap esta vacia?, {0}", heapBinaria.esVacia());
