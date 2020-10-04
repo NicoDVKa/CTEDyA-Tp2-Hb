@@ -42,5 +42,11 @@ namespace HB
         {
             return this.datos.Length >= (i * 2 + 1);
         }
+
+        //Metodo es vacia
+         public bool esVacia()
+        {
+            return this.datos.Length <= 1;
+        }
     }
 }
