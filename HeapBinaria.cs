@@ -36,6 +36,7 @@ namespace HB
         private bool tienePadre(int i){
             return i > 1;
         }
+        
         private int getHijoIzquierdo(int i){
             return int.Parse(this.datos[i * 2].ToString());
         }
@@ -54,6 +55,7 @@ namespace HB
             return this.datos.Length >= (i * 2 + 1);
         }
 
+        //=====================================================================
         //Metodo swap
         public void swap(int posA , int posB)
         {
@@ -106,6 +108,19 @@ namespace HB
                 Console.Write(i + " " );
             }
             Console.WriteLine();
+        }
+
+        //Ver tope de la Heap
+        public string verTope(){
+            if (datos.Length > 1)
+            {
+                return datos[1].ToString();
+            }
+            else
+            {
+                return "null";
+            }
+       
         }
 
     }

@@ -16,6 +16,7 @@ namespace HB
            //Comprobacion de esVacia()
            Console.WriteLine("La heap esta vacia?, {0}", heapBinaria.esVacia());
 
+            //Comprobacion de agregarElemento() MaxHeap
             heapBinaria.agregarElemento(1);
             heapBinaria.agregarElemento(6);
             heapBinaria.agregarElemento(5);
@@ -23,12 +24,19 @@ namespace HB
             heapBinaria.agregarElemento(4);
             heapBinaria.agregarElemento(2);
             heapBinaria.agregarElemento(7);
+            Console.Write("maxHeap: ");
             
+            //Comprobacion de verDatos()
+            heapBinaria.verDatos(); Console.WriteLine();
+            
+            //Comprobacion de verTope()
+            Console.WriteLine("El dato de la raiz es: {0}",heapBinaria.verTope());
 
-            heapBinaria.verDatos();
-            Console.WriteLine();
-           Console.WriteLine("Presione una tecla para salir.");
-           Console.ReadKey(true);
+            
+            
+            Console.WriteLine("Presione una tecla para salir.");
+            Console.ReadKey(true);
+
         }
     }  
 }
