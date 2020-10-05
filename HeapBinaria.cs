@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -47,12 +48,12 @@ namespace HB
 
         private bool tieneHijoIzquierdo(int i)
         {
-            return this.datos.Length >= (i * 2); 
+            return this.datos.Length > (i * 2); 
         }
         
         private bool tieneHijoDerecho(int i)
         {
-            return this.datos.Length >= (i * 2 + 1);
+            return this.datos.Length > (i * 2 + 1);
         }
 
         //=====================================================================
@@ -77,7 +78,7 @@ namespace HB
             datos = datos.Concat(arregloTemporal).ToArray();  //Agrego el elemento al final del arreglo
             int posInsertada = datos.Length - 1;
             
-            if (this.claseHeap) //En caso ser una maxHeap
+            if (this.claseHeap) //En caso de ser una maxHeap
             {
                  while (this.tienePadre(posInsertada) && this.getPadre(posInsertada) < int.Parse(elemento.ToString()))
                  {
@@ -112,9 +113,9 @@ namespace HB
 
         //Ver tope de la Heap
         public string verTope(){
-            if (datos.Length > 1)
+            if (!this.esVacia())
             {
-                return datos[1].ToString();
+                return this.getRaiz().ToString();
             }
             else
             {
@@ -123,5 +124,58 @@ namespace HB
        
         }
 
+        //Elimina la raiz y reordena
+        public string eliminar()
+        {
+            if (!this.esVacia())//Compruebo que no este vacia
+            {
+                string datoRaiz = this.getRaiz().ToString();   //Guardo el dato de la raiz
+                this.datos[1] = datos[datos.Length - 1];       //El ultimo dato pasa a ser la raiz
+                Array.Resize(ref this.datos, datos.Length - 1);//Se elimina el ultimo elemento
+                int posACambiar = 1;
+                
+                if (this.claseHeap)
+                {
+                   
+                    while(this.tieneHijoIzquierdo(posACambiar) && this.tieneHijoDerecho(posACambiar))
+                    {
+                        if (this.getHijoIzquierdo(posACambiar) > this.getHijoDerecho(posACambiar)) 
+                        {
+                            swap(posACambiar,posACambiar * 2); //Cambiamos con el hijo Izquierdo
+                            posACambiar = posACambiar * 2;
+                        }
+                        else
+                        {
+                            swap(posACambiar, posACambiar * 2 + 1); //Cambiamos con el hijo derecho
+                            posACambiar = posACambiar * 2 + 1;
+                        }
+                    }
+                }
+                if (!this.claseHeap)
+                {
+                    while (this.tieneHijoIzquierdo(posACambiar) && this.tieneHijoDerecho(posACambiar))
+                    {
+                        if (this.getHijoIzquierdo(posACambiar) < this.getHijoDerecho(posACambiar))
+                        {
+                            swap(posACambiar, posACambiar * 2); //Cambiamos con el hijo Izquierdo
+                            posACambiar = posACambiar * 2;
+                        }
+                        else
+                        {
+                            swap(posACambiar, posACambiar * 2 + 1); //Cambiamos con el hijo derecho
+                            posACambiar = posACambiar * 2 + 1;
+                        }
+                    }
+                }
+
+                return datoRaiz;
+            }
+            else
+            {
+                return "null";
+            }
+
+            
+        }
     }
 }
